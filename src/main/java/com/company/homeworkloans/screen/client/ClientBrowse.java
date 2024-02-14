@@ -22,10 +22,14 @@ public class ClientBrowse extends StandardLookup<Client> {
     @Subscribe("clientsTable.showRequestLoan")
     public void onClientsTableShowRequestLoan(final Action.ActionPerformedEvent event) {
         Client selected = clientsTable.getSingleSelected();
+        if (selected == null) {
+            return;
+        }
         screenBuilders.screen(this)
                 .withScreenClass(RequestLoan.class)
                 .withOpenMode(OpenMode.DIALOG)
                 .build()
+                .withClient(selected)
                 .show();
     }
 }

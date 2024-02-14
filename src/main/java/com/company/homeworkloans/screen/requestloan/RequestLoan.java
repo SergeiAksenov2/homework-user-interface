@@ -10,8 +10,8 @@ import io.jmix.ui.component.EntityComboBox;
 import io.jmix.ui.component.TextField;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 
+import javax.annotation.Nullable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -33,12 +33,14 @@ public class RequestLoan extends Screen {
     @Autowired
     private TextField<BigDecimal> amountField;
 
-    @Autowired
-    protected ApplicationContext applicationContext;
-
     @Subscribe("windowClose")
     public void onWindowClose(final Action.ActionPerformedEvent event) {
         close(StandardOutcome.CLOSE);
+    }
+
+    public RequestLoan withClient(@Nullable Client client) {
+        clientField.setValue(client);
+        return this;
     }
 
     @Subscribe("windowCommitAndClose")
