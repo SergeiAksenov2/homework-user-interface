@@ -42,6 +42,11 @@
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
+                <action id="showRequestLoan"
+                        caption="msg://showRequestLoan.caption"
+                        type="itemTracking"
+                        icon="font-icon:DOWNLOAD"/>
+
             </actions>
             <columns>
                 <column id="firstName"/>
@@ -56,6 +61,10 @@
                 <button id="createBtn" action="clientsTable.create"/>
                 <button id="editBtn" action="clientsTable.edit"/>
                 <button id="removeBtn" action="clientsTable.remove"/>
+                <button id="showRequestLoanBtn"
+                        action="clientsTable.showRequestLoan"
+                        caption="Request loan"/>
+
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

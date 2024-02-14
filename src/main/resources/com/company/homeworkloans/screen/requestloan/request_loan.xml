@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://requestLoan.caption">
+    <data>
+        <collection id="clientsDc" class="com.company.homeworkloans.entity.Client">
+            <fetchPlan extends="_instance_name"/>
+            <loader id="clientsDl">
+                <query>
+                    <![CDATA[select e from Client e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose"
+                caption="Request"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
     <layout>
+        <hbox spacing="true">
+            <entityComboBox id="clientField"
+                            caption="Client"
+                            optionsContainer="clientsDc"
+                            required="true">
+                <actions>
+<!--                    <action id="entity_lookup" type="entity_lookup"/>-->
+                    <action id="entity_clear" type="entity_clear"/>
+                </actions>
+            </entityComboBox>
+
+            <textField id="amountField"
+                       caption="Amount"
+                       datatype="decimal"
+                       required="true">
+                <validators>
+                    <decimalMin inclusive="false" value="1"/>
+                    <positiveOrZero/>
+                </validators>
+
+            </textField>
+
+        </hbox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
     </layout>
 </window>

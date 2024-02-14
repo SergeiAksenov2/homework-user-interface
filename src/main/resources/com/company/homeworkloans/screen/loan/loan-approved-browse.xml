@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://window2.caption"
+        focusComponent="loansTable">
+    <data readOnly="true">
+        <collection id="loansDc"
+                    class="com.company.homeworkloans.entity.Loan">
+            <fetchPlan extends="_base">
+                <property name="client" fetchPlan="_base">
+                </property>
+            </fetchPlan>
+            <loader id="loansDl">
+                <query>
+                    <![CDATA[select e from Loan e where e.status = 'A']]>
+                    <!--<@enum(com.company.homeworkloans.entity.LoanStatus.APPROVED)]] >-->
+                </query>
+            </loader>
+        </collection>
+        <collection id="clientLoansDc"
+                    class="com.company.homeworkloans.entity.Loan">
+            <fetchPlan extends="_base">
+            </fetchPlan>
+            <loader id="clientLoansDl"/>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="loansTable" spacing="true">
+        <groupTable id="loansTable"
+                    dataContainer="loansDc"
+                    width="100%">
+            <actions>
+            </actions>
+            <columns>
+                <group>
+                    <column id="requestDate"/>
+                </group>
+                <column id="client"/>
+                <column id="amount"/>
+                <column id="client.salary"/>
+                <column id="client.phoneNumber"/>
+                <column id="clientAge"/>
+                <column id="status"/>
+            </columns>
+            <simplePagination/>
+        </groupTable>
+<!--        <hbox spacing="true" width="100%">-->
+<!--            <table id="clientLoansTable"-->
+<!--                   dataContainer="clientLoansDc"-->
+<!--                   caption="msg://clientLoansTable1.caption"-->
+<!--                   height="100%"-->
+<!--                   width="100%">-->
+<!--                <columns>-->
+<!--                    <column id="amount"/>-->
+<!--                    <column id="requestDate"/>-->
+<!--                    <column id="status"/>-->
+<!--                </columns>-->
+<!--            </table>-->
+<!--        </hbox>-->
+    </layout>
+</window>
