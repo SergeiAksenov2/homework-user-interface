@@ -15,16 +15,13 @@ public class ClientBrowse extends StandardLookup<Client> {
 
     @Autowired
     private GroupTable<Client> clientsTable;
+
     @Autowired
     private ScreenBuilders screenBuilders;
 
     @Subscribe("clientsTable.showRequestLoan")
     public void onClientsTableShowRequestLoan(final Action.ActionPerformedEvent event) {
         Client selected = clientsTable.getSingleSelected();
-        if (selected == null) {
-            return;
-        }
-
         screenBuilders.screen(this)
                 .withScreenClass(RequestLoan.class)
                 .withOpenMode(OpenMode.DIALOG)

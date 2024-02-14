@@ -29,24 +29,21 @@
             <entityComboBox id="clientField"
                             caption="Client"
                             optionsContainer="clientsDc"
+                            property="client"
                             required="true">
                 <actions>
-<!--                    <action id="entity_lookup" type="entity_lookup"/>-->
                     <action id="entity_clear" type="entity_clear"/>
                 </actions>
             </entityComboBox>
-
             <textField id="amountField"
                        caption="Amount"
                        datatype="decimal"
                        required="true">
                 <validators>
-                    <decimalMin inclusive="false" value="1"/>
-                    <positiveOrZero/>
+                    <decimalMin value="1"/>
+                    <positive/>
                 </validators>
-
             </textField>
-
         </hbox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>

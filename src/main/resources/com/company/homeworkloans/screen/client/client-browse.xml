@@ -44,9 +44,7 @@
                 <action id="remove" type="remove"/>
                 <action id="showRequestLoan"
                         caption="msg://showRequestLoan.caption"
-                        type="itemTracking"
                         icon="font-icon:DOWNLOAD"/>
-
             </actions>
             <columns>
                 <column id="firstName"/>

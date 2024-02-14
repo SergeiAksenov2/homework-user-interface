@@ -41,21 +41,16 @@
                width="100%"
                dataContainer="loansDc">
             <actions>
-                <!--      REMOVE!          -->
-                <action id="remove" type="remove"/>
             </actions>
             <columns>
                 <column id="client"/>
                 <column id="amount"/>
                 <column id="requestDate"/>
                 <column id="status"/>
-<!--                <column id="id"/>-->
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <!--      REMOVE!          -->
-                <button id="removeBtn" action="loansTable.remove"/>
             </buttonsPanel>
         </table>
         <hbox id="lookupActions" spacing="true" visible="false">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         xmlns:c="http://jmix.io/schema/ui/jpql-condition"
-        caption="msg://window2.caption"
+        caption="msg://window.caption"
         focusComponent="loansTable">
     <data readOnly="true">
         <collection id="loansDc"
@@ -12,8 +12,7 @@
             </fetchPlan>
             <loader id="loansDl">
                 <query>
-                    <![CDATA[select e from Loan e where e.status = 'A']]>
-                    <!--<@enum(com.company.homeworkloans.entity.LoanStatus.APPROVED)]] >-->
+                    <![CDATA[select e from Loan e where e.status = @enum(com.company.homeworkloans.entity.LoanStatus.REQUESTED)]]>
                 </query>
             </loader>
         </collection>
@@ -45,7 +44,15 @@
                     dataContainer="loansDc"
                     width="100%">
             <actions>
+                <action id="approveAction"/>
+                <action id="rejectAction"/>
             </actions>
+            <buttonsPanel>
+                <button id="approveActionBtn" action="loansTable.approveAction" caption="Approve"
+                        icon="font-icon:THUMBS_UP"/>
+                <button id="rejectActionBtn" action="loansTable.rejectAction" caption="Reject"
+                        icon="font-icon:THUMBS_DOWN"/>
+            </buttonsPanel>
             <columns>
                 <group>
                     <column id="requestDate"/>
@@ -59,18 +66,5 @@
             </columns>
             <simplePagination/>
         </groupTable>
-<!--        <hbox spacing="true" width="100%">-->
-<!--            <table id="clientLoansTable"-->
-<!--                   dataContainer="clientLoansDc"-->
-<!--                   caption="msg://clientLoansTable1.caption"-->
-<!--                   height="100%"-->
-<!--                   width="100%">-->
-<!--                <columns>-->
-<!--                    <column id="amount"/>-->
-<!--                    <column id="requestDate"/>-->
-<!--                    <column id="status"/>-->
-<!--                </columns>-->
-<!--            </table>-->
-<!--        </hbox>-->
     </layout>
 </window>
