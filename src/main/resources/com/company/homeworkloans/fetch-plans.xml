@@ -1,0 +1,5 @@
+<fetchPlans xmlns="http://jmix.io/schema/core/fetch-plans">
+    <fetchPlan entity="Loan" name="loan-fetch-plan" extends="_base">
+        <property name="client" fetchPlan="_instance_name"/>
+    </fetchPlan>
+</fetchPlans>
