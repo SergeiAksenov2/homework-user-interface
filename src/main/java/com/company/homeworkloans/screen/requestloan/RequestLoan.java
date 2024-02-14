@@ -60,7 +60,6 @@ public class RequestLoan extends Screen {
                     close(StandardOutcome.CLOSE);
                 } else {
                     notifications.create()
-                            .withType(Notifications.NotificationType.TRAY)
                             .withCaption("Please enter correct positive value")
                             .show();
                 }
